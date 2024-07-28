@@ -24,31 +24,58 @@
   const color5 = ref(false)
   
   // File path to your CSV file
-  const dataFile = "./src/assets/sgb-words.csv"
+  const dataFile = "./src/assets/sgb-words.txt"
 
-  // Function to load data from CSV file
-  onMounted(() => {
-    isLoading.value = true;
-    fetch(dataFile)
-      .then((res) => res.text())
-      .then((text) => loadData(text))
-      .then((parsedText) => showData(parsedText));
-  });
 
-  // Function to load data from CSV file
-  async function loadData(dataText) {
+  const fileLines = ref([]);
 
-    let data = papaparse.parse(dataText, { delimiter: "\n", header: true });
-    return data;
+// Fetch the file when the component is mounted
+onMounted(async () => {
+  try {
+    const response = await fetch(dataFile);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch file: ${response.statusText}`);
+    }
+    const text = await response.text();
+    fileLines.value = text.split('\n').map(line => line.trim());
+    console.log(fileLines.value)
+    showData(fileLines.value)
+  } catch (error) {
+    console.error('Error fetching and parsing file:', error);
   }
+});
+  // Function to load data from CSV file
+//   onMounted(() => {
+//     isLoading.value = true;
+//     fetch(dataFile)
+// .then(res => {
+//       console.log(res.toString().split("/n"))
+//     return showData(res.toString().split("/n"));
+//   });
+// })
+        // .then((res) => res.text())
+      // .then((text) => loadData(text))
+      // .then((parsedText) => showData(parsedText));
+
+  // Function to load data from CSV file
+  // async function loadData(dataText) {
+
+    // let data = papaparse.parse(dataText, { delimiter: ",", header: true });
+  //   console.log(dataText.split("/n"))
+  //   return dataText;
+  // }
 
 
   function showData(parsedData) {
-    for (let wordDict of parsedData["data"]) {
-      if (wordDict["word"].length === 5) {
-        remaining_words.value.push(wordDict["word"].toLowerCase())
+    console.log('showData called')
+    for (let wordDict of parsedData) {
+      if (wordDict.length === 5) {
+
+        remaining_words.value.push(wordDict.toLowerCase())
+        console.log('remaining_words.value: ', remaining_words.value)
+        // remaining_words.value.push(wordDict["word"].toLowerCase())
         //remaining_words.value = remaining_words.value.sort()
-        remaining_words2.value.push(wordDict["word"].toLowerCase())
+        // remaining_words2.value.push(wordDict["word"].toLowerCase())
         //remaining_words2.value = remaining_words.value.sort()
       }
     }
