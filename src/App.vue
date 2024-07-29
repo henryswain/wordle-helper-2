@@ -24,7 +24,7 @@
   const color5 = ref(false)
   
   // File path to your CSV file
-  const dataFile = "./src/assets/sgb-words.txt"
+  const dataFile = "/assets/sgb-words.txt"
 
 
   const fileLines = ref([]);
