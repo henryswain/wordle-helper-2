@@ -188,92 +188,86 @@ onMounted(async () => {
         return true
       })
 
+      const ylettmapKeys = Object.keys(ylettmap.value)
+      console.log("ylettmapKeys: ", ylettmapKeys)
+      // remaining_words.value = remaining_words.value.filter((word) => {
+        let yellowTruths = new Array(ylettmapKeys.length).fill(false);
+        for (let c of ylettmapKeys) {
+          let count = 0;
+          let bad = false;
 
-        console.log("Object.keys(ylettmap): ", Object.keys(ylettmap.value))
-      for (let c of Object.keys(ylettmap.value)) {
-        console.log(`Object.keys(ylettmap.value).indexOf(${c}): `, Object.keys(ylettmap.value).indexOf(c))
-        console.log("c: ", c)
-        let count = 0;
-        let bad = false;
-
-        const possibleYExistancePlaces = ref([])
+          const possibleYExistancePlaces = ref([])
           for (let i of nongreenindex) {
-            console.log("typeof i: ", typeof i)
-
-       
             if (!(charExist.value[c].includes(parseInt(i)))) {
               possibleYExistancePlaces.value.push(i)
             }
           }
+          if (Object.keys(blackExist.value).includes(c)) {
+            remaining_words.value = remaining_words.value.filter((word) => {
 
-        console.log("Object.keys(blackExist.value): ", Object.keys(blackExist.value))
-        if (Object.keys(blackExist.value).includes(c)) {
-          console.log("c", c)
-          console.log(`charExist.value[${c}]: `, charExist.value[c])
-
-  
-          console.log("possibleYExistancePlaces.value: ", possibleYExistancePlaces.value)
-
-          remaining_words.value = remaining_words.value.filter((word) => {
-            console.log("word: ", word)
-            let count = 0;
-
-            for (let i = 0; i < 5; i++) {
-              if (!(possibleYExistancePlaces.value.includes(i))) {
-                console.log(`!(possibleYExistancePlaces.value.includes(${i})): `, !(possibleYExistancePlaces.value.includes(i)))
-                if (word[i] == c) {
-
-                  return false
+              console.log("c", c)
+              let count = 0;
+        
+              for (let i = 0; i < 5; i++) {
+                if (!(possibleYExistancePlaces.value.includes(i))) {
+                  if (word[i] == c) {
+                    // yellowTruths[ylettmapKeys.indexOf(c)] = false
+                    return false
+                  }
                 }
+                else {
+                  if (word[i] == c) {
+                    count++ 
+                  }
+                }
+              }
+              if (count == ylettmap.value[c].length) {
+                // yellowTruths[ylettmapKeys.indexOf(c)] = true
+                return true
               }
               else {
-                console.log("else condition met")
-                if (word[i] == c) {
-                  console.log(`word[${i}] == ${c}`)
-                  count++ 
-                  console.log("count: ", count)
+                // yellowTruths[ylettmapKeys.indexOf(c)] = false
+                return false
+              }
+            })
+            
+          }
+          else {
+            remaining_words.value = remaining_words.value.filter((word) => {
+
+              let good = false
+              for (let i of nongreenindex) {          
+                if (!(possibleYExistancePlaces.value.includes(i))) {
+                  if (word[i] == c) {
+                    // yellowTruths[ylettmapKeys.indexOf(c)] = false
+                    return false
+                  }
+                }
+                else {
+                  if (word[i] == c) {
+                    good = true
+                  }
                 }
               }
-            }
-            if (count == ylettmap.value[c].length) {
-              return true
-            }
-            else {
-              return false
-            }
-          })
-        }
-        else {
-          console.log(`!Object.keys(blackExist.value).includes(${c}): `, Object.keys(blackExist.value).includes(c))
-          remaining_words.value = remaining_words.value.filter((word) => {
-            let good = false
-            console.log('c: ', c)
-            for (let i of nongreenindex) {
-              console.log(`typeof ${i}`, typeof i)
-          
-              if (!(possibleYExistancePlaces.value.includes(i))) {
-                console.log(`!(possibleYExistancePlaces.value.includes(${i})): `, !(possibleYExistancePlaces.value.includes(i)))
-                if (word[i] == c) {
-
-                  return false
-                }
+              if (good == false) {
+                // yellowTruths[ylettmapKeys.indexOf(c)] = false
+                return false
               }
               else {
-                if (word[i] == c) {
-                  good = true
-                  break
-                }
+                // yellowTruths[ylettmapKeys.indexOf(c)] = true
+                return true
               }
-            }
-            if (good == false) {
-              return false
-            }
-            else {return true}
-          })
+            })
+          }
         }
-      
-        console.log("end of for loop")
-      }
+        
+        // if (yellowTruths.includes(false)) {
+        //   return false
+        // }
+        // else {
+        //   return true
+        // }
+      // })
 
 
       // for (let c of Object.keys(blackExist.value)) {
@@ -328,22 +322,85 @@ onMounted(async () => {
       //     }
       //   })
       // }
-  
-   
-    loaded.value = true; // Set loaded to true after filtering
-    isLoading.value = false; // Set isLoading to false after filtering
+
+      
+      const blackExistKeys = Object.keys(blackExist.value)
+      console.log("blackExistKeys: ", blackExistKeys)
+      // remaining_words.value = remaining_words.value.filter((word) => {
+        let blackTruths = new Array(blackExistKeys.length).fill(false);
+        for (let c of blackExistKeys) {
+          console.log("c: ", c)
+          let count = 0;
+          const possibleBExistancePlaces = ref([])
+          for (let i of nongreenindex) {
+            if (!(charExist.value[c].includes(parseInt(i)))) {
+              possibleBExistancePlaces.value.push(i)
+            }
+          }
+
+          console.log("possibleBExistancePlaces.value: ", possibleBExistancePlaces.value)
+          if (Object.keys(ylettmap.value).includes(c)) {
+
+            remaining_words.value = remaining_words.value.filter((word) => {
+            let count = 0;
+
+            for (let i = 0; i < 5; i++) {
+              if (!(possibleBExistancePlaces.value.includes(i))) {
+                if (word[i] == c) {
+                  // blackTruths[blackExistKeys.indexOf(c)] = false
+                  return false
+                }
+              }
+              else {
+                if (word[i] == c) {
+                  count++ 
+                }
+              }
+            }
+            if (count == ylettmap.value[c].length) {
+              // blackTruths[blackExistKeys.indexOf(c)] = true
+              return true
+            }
+            else {
+              // blackTruths[blackExistKeys.indexOf(c)] = false
+              return false
+            }
+          })
+          }
+          else {
+            remaining_words.value = remaining_words.value.filter((word) => {
+
+            for (let i of nongreenindex) {
+              if (word[i] == c) {
+                // blackTruths[blackExistKeys.indexOf(c)] = false
+                return false
+              }
+            }
+            // blackTruths[blackExistKeys.indexOf(c)] = true
+            return true
+          })
+          }
+        }
+        // if (blackTruths.includes(false)) {
+        //   return false
+        // }
+        // else {return true}
+      // })
+
+      loaded.value = true; // Set loaded to true after filtering
+      isLoading.value = false; // Set isLoading to false after filtering
 
 
-    // Clear input fields
-    wordAttempt.value = '';
-    wordResult.value = '';
-  }, 0);
-  letter1.value = false
-  letter2.value = false
-  letter3.value = false
-  letter4.value = false
-  letter5.value = false
-}
+      // Clear input fields
+      wordAttempt.value = '';
+      wordResult.value = '';
+    }, 0);
+    letter1.value = false
+    letter2.value = false
+    letter3.value = false
+    letter4.value = false
+    letter5.value = false
+  }
 </script>
 
 <template>
