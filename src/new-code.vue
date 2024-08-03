@@ -99,8 +99,6 @@ onMounted(async () => {
   // Function to filter and update the list of remaining words
   function addWordInfo() {
 
-    console.log("wordAttempt: ", wordAttempt.value)
-
     wordResult.value = letter1.value + letter2.value + letter3.value + letter4.value + letter5.value
     wordGuesses.value.push(wordAttempt.value)
 
@@ -110,17 +108,16 @@ onMounted(async () => {
     isLoading.value = true;
     loaded.value = false;
    
-    console.log("wordResult: ", wordResult.value)
+    
     // let color = wordResult.value[m].toLowerCase(); 
     // let letter = wordAttempt.value[m].toLowerCase();
 
     let nongreenindex = []
-      for (let l = 0; l < 5; l++) {
+      for (let l in wordResult.value) {
         if (wordResult.value.charAt(l) !== "g") {
           nongreenindex.push(l)
         }
       } 
-      console.log("nongreenindex: ", nongreenindex)
 
       // creates a map of all black characters and their black index
       const blackExist = ref({})
@@ -164,16 +161,13 @@ onMounted(async () => {
         }
       }
       console.log("charExist.value: ", charExist.value)
-
-      // const possibleYExistancePlaces = ref({})
-
     setTimeout(() => {
     
       remaining_words.value = remaining_words.value.filter((word) => {
 
             
 
-        for (let m = 0; m < 5; m++) {
+        for (let m = 0; m < wordAttempt.value.length; m++) {
           // creates an array of the indicies of green characters
           let color = wordResult.value[m].toLowerCase(); 
           let letter = wordAttempt.value[m].toLowerCase();
@@ -186,148 +180,124 @@ onMounted(async () => {
           }
         }
         return true
-      })
+        })
 
 
-        console.log("Object.keys(ylettmap): ", Object.keys(ylettmap.value))
-      for (let c of Object.keys(ylettmap.value)) {
-        console.log(`Object.keys(ylettmap.value).indexOf(${c}): `, Object.keys(ylettmap.value).indexOf(c))
-        console.log("c: ", c)
-        let count = 0;
-        let bad = false;
+      for (let c of Object.keys(ylettmap)) {
+        remaining_words.value = remaining_words.value.filter((word) => {
+          let count = 0;
+          let alreadyCovered = [];
+          let bad = false;
 
-        const possibleYExistancePlaces = ref([])
-          for (let i of nongreenindex) {
-            console.log("typeof i: ", typeof i)
+          if (c in blackExist.value) {
 
-       
-            if (!(charExist.value[c].includes(parseInt(i)))) {
-              possibleYExistancePlaces.value.push(i)
-            }
-          }
-
-        console.log("Object.keys(blackExist.value): ", Object.keys(blackExist.value))
-        if (Object.keys(blackExist.value).includes(c)) {
-          console.log("c", c)
-          console.log(`charExist.value[${c}]: `, charExist.value[c])
-
-  
-          console.log("possibleYExistancePlaces.value: ", possibleYExistancePlaces.value)
-
-          remaining_words.value = remaining_words.value.filter((word) => {
-            console.log("word: ", word)
-            let count = 0;
-
-            for (let i = 0; i < 5; i++) {
-              if (!(possibleYExistancePlaces.value.includes(i))) {
-                console.log(`!(possibleYExistancePlaces.value.includes(${i})): `, !(possibleYExistancePlaces.value.includes(i)))
-                if (word[i] == c) {
-
-                  return false
-                }
-              }
-              else {
-                console.log("else condition met")
-                if (word[i] == c) {
-                  console.log(`word[${i}] == ${c}`)
-                  count++ 
-                  console.log("count: ", count)
-                }
-              }
-            }
-            if (count == ylettmap.value[c].length) {
-              return true
-            }
-            else {
-              return false
-            }
-          })
-        }
-        else {
-          console.log(`!Object.keys(blackExist.value).includes(${c}): `, Object.keys(blackExist.value).includes(c))
-          remaining_words.value = remaining_words.value.filter((word) => {
-            let good = false
-            console.log('c: ', c)
+            let possibleExistancePlaces = ref([])
             for (let i of nongreenindex) {
-              console.log(`typeof ${i}`, typeof i)
-          
-              if (!(possibleYExistancePlaces.value.includes(i))) {
-                console.log(`!(possibleYExistancePlaces.value.includes(${i})): `, !(possibleYExistancePlaces.value.includes(i)))
-                if (word[i] == c) {
-
-                  return false
-                }
+              if (!(charExist.value[c].includes(i))) {
+                possibleExistancePlaces.value.push(parseInt(i))
               }
-              else {
+            }
+
+            for (let i in word) {
+              if (!(possibleExistancePlaces.value.includes(i))) {
                 if (word[i] == c) {
-                  good = true
+                  return false
+                  // truths.push(false)
+                  bad = true
                   break
                 }
+              }
+              else {
+                if (word[i] == c) {
+                  count++ 
+                }
+              }
+            }
+            if (bad == false) {
+              if (count == ylettmap.value[c].length) {
+                truths.push(true) 
+              }
+              else {
+                return false
+                // truths.push(false)
+              }
+            }
+          }
+          else {
+            let good = false
+            for (let i of nongreenindex) {
+              if (word[i] == c) {
+                truths.push(true)
+                good = true
+                break
               }
             }
             if (good == false) {
               return false
+              truths.push(false)
             }
-            else {return true}
-          })
-        }
-      
-        console.log("end of for loop")
+          }
+          return true
+        })
       }
 
 
-      // for (let c of Object.keys(blackExist.value)) {
-      //   remaining_words.value = remaining_words.value.filter((word) => {
-      //     let count = 0;
-      //     let alreadyCovered = [];
-      //     let bad = false;
+      for (let c of Object.keys(blackExist)) {
+        remaining_words.value = remaining_words.value.filter((word) => {
+          let count = 0;
+          let alreadyCovered = [];
+          let bad = false;
 
 
 
-      //     if (c in ylettmap.value) {
+          if (c in ylettmap.value) {
 
-      //       let possibleExistancePlaces = ref([])
-      //       for (let i of nongreenindex) {
-      //         if (!(charExist.value[c].includes(i))) {
-      //           possibleExistancePlaces.value.push(parseInt(i))
-      //         }
-      //       }
+            let possibleExistancePlaces = ref([])
+            for (let i of nongreenindex) {
+              if (!(charExist.value[c].includes(i))) {
+                possibleExistancePlaces.value.push(parseInt(i))
+              }
+            }
 
-      //       for (let i in word) {
-      //         if (!(possibleExistancePlaces.value.includes(i))) {
-      //           if (word[i] == c) {
-      //             return false
-      //             bad = true
-      //             break
-      //           }
-      //         }
-      //         else {
-      //           if (word[i] == c) {
-      //             count++ 
-      //           }
-      //         }
-      //       }
-      //       if (bad == false) {
-      //         if (count == ylettmap.value[c].length) {
-      //         }
-      //         else {
-      //           return false
-      //         }
-      //       }
-      //     }
-      //     else {
-      //       let bad2 = false
-      //       for (let i of nongreenindex) {
-      //         if (word[i] == letter) {
-      //           bad = true
-      //         }
-      //       }
-      //       if (!bad2) {
-      //         return true
-      //       }
-      //     }
-      //   })
-      // }
+            for (let i in word) {
+              if (!(possibleExistancePlaces.value.includes(i))) {
+                if (word[i] == c) {
+                  truths.push(false)
+                  return false
+                  bad = true
+                  break
+                }
+              }
+              else {
+                if (word[i] == c) {
+                  count++ 
+                }
+              }
+            }
+            if (bad == false) {
+              if (count == ylettmap.value[c].length) {
+                truths.push(true) 
+              }
+              else {
+                truths.push(false)
+                return false
+              }
+            }
+          }
+          else {
+            let bad2 = false
+            for (let i of nongreenindex) {
+              if (word[i] == letter) {
+                truths.push(false)
+                bad = true
+              }
+            }
+            if (!bad2) {
+              return true
+            }
+          }
+        })
+      }
   
    
     loaded.value = true; // Set loaded to true after filtering
