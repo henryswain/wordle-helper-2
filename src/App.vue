@@ -99,6 +99,7 @@ onMounted(async () => {
   // Function to filter and update the list of remaining words
   function addWordInfo() {
 
+    wordAttempt.value = wordAttempt.value.toLowerCase()
     console.log("wordAttempt: ", wordAttempt.value)
 
     wordResult.value = letter1.value + letter2.value + letter3.value + letter4.value + letter5.value
@@ -167,11 +168,27 @@ onMounted(async () => {
 
       // const possibleYExistancePlaces = ref({})
 
+      // const greenExist = ref({})
+      // for (let i = 0; i < 5; i++) {
+      //   if (wordResult.value[i].toLowerCase() === "g") {
+      //     if (wordAttempt.value[i] in greenExist.value) {
+      //       greenExist.value[wordAttempt.value[i]].push(i)
+      //     }
+      //     else {greenExist.value[wordAttempt.value[i]] = [i]}
+      //   }
+      // }
+
     setTimeout(() => {
+
+      // const greenExistKeys = Object.keys(greenExist.value)
+      // for (let c of greenExistKeys) {
+      //   remaining_words.value = remaining_words.value.filter((word) => {
+
+      //   })
+      // }
+
     
       remaining_words.value = remaining_words.value.filter((word) => {
-
-            
 
         for (let m = 0; m < 5; m++) {
           // creates an array of the indicies of green characters
