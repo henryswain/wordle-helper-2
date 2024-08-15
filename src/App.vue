@@ -1,3 +1,440 @@
+
+
+<template>
+  <div class="my-3 mx-3">
+    <header>
+      <h2>Enter information below for an updated list of possible wordle words.</h2>
+    </header>
+  </div>
+
+  <div class="mb-1 mx-3">
+    <label for="word" class="form-label">From the list below, enter the word you used for your wordle guess.</label>
+    <input type="text" class="form-control" id="word" ref="fValue" v-model="wordAttempt" placeholder="paste it here">
+  </div>
+
+
+
+  <div class="mb-1 mx-3">
+    <p>Enter wordles feedback for you by selecting the appropriate colors in the dropdown buttons below.</p>
+    <!-- <label for="wordColorKey" class="form-label">For each letter of your word attempt, type the letter corresponding to color feedback: y for yellow, g for green, c for charcoal.</label>
+    <input type="text" class="form-control" id="WordColorKey" v-model="wordResult" placeholder="type code here. Ex: cycgg"> -->
+  </div>
+
+  <div class="mb-1 mx-3">
+    <div id="buttonGroup" class="btn-group" role="group" aria-label="Button group with nested dropdown">
+      <!-- btn-group-responsive -->
+      <!-- btn-group btn-group-responsive -->
+      <!-- <div v-if="letter1 === false"> -->
+        <div v-if="letter1 === false" class="btn-group nested" role="group" id="nested">
+          <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            1st letter color
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <!-- <button type="button" class="btn btn-secondary">grey</button>
+            <button type="button" class="btn btn-warning">yellow</button>
+            <button type="button" class="btn btn-success">green</button> -->
+            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter1 = false">1st letter color</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter1 = 'c'">grey</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter1 = 'y'">yellow</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter1 = 'g'">green</button></a>
+
+          </div>
+        </div>
+      <!-- </div> -->
+      <!-- <div v-else-if="letter1 === 'c'"> -->
+        <div v-else-if="letter1 === 'c'" class="btn-group nested" role="group" id="nested">
+          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            grey    
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <!-- <button type="button" class="btn btn-secondary">grey</button>
+            <button type="button" class="btn btn-warning">yellow</button>
+            <button type="button" class="btn btn-success">green</button> -->
+            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter1 = false">1st letter color</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter1 = 'c'">grey</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter1 = 'y'">yellow</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter1 = 'g'">green</button></a>
+
+          </div>
+        </div>
+      <!-- </div> -->
+      <!-- <div v-else-if="letter1 === 'y'"> -->
+        <div v-else-if="letter1 === 'y'" class="btn-group nested" role="group" id="nested">
+          <button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            yellow    
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <!-- <button type="button" class="btn btn-secondary">grey</button>
+            <button type="button" class="btn btn-warning">yellow</button>
+            <button type="button" class="btn btn-success">green</button> -->
+            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter1 = false">1st letter color</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter1 = 'c'">grey</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter1 = 'y'">yellow</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter1 = 'g'">green</button></a>
+
+          </div>
+        </div>
+      <!-- </div> -->
+      <!-- <div v-else="letter1 === 'g'"> -->
+        <div v-else="letter1 === 'g'" class="btn-group nested" role="group" id="nested">
+          <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            green    
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <!-- <button type="button" class="btn btn-secondary">grey</button>
+            <button type="button" class="btn btn-warning">yellow</button>
+            <button type="button" class="btn btn-success">green</button> -->
+            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter1 = false">1st letter color</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter1 = 'c'">grey</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter1 = 'y'">yellow</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter1 = 'g'">green</button></a>
+
+          </div>
+        </div>
+      <!-- </div> -->
+
+
+
+
+      <!-- <div v-if="letter2 === false"> -->
+        <div v-if="letter2 === false" class="btn-group nested" role="group" id="nested">
+          <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            2nd letter color
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <!-- <button type="button" class="btn btn-secondary">grey</button>
+            <button type="button" class="btn btn-warning">yellow</button>
+            <button type="button" class="btn btn-success">green</button> -->
+            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter2 = false">2nd letter color</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter2 = 'c'">grey</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter2 = 'y'">yellow</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter2 = 'g'">green</button></a>
+
+          </div>
+        </div>
+      <!-- </div> -->
+      <!-- <div v-else-if="letter2 === 'c'"> -->
+        <div v-else-if="letter2 === 'c'" class="btn-group nested" role="group" id="nested">
+          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            grey    
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <!-- <button type="button" class="btn btn-secondary">grey</button>
+            <button type="button" class="btn btn-warning">yellow</button>
+            <button type="button" class="btn btn-success">green</button> -->
+            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter2 = false">2nd letter color</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter2 = 'c'">grey</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter2 = 'y'">yellow</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter2 = 'g'">green</button></a>
+
+          </div>
+        </div>
+      <!-- </div> -->
+      <!-- <div v-else-if="letter2 === 'y'"> -->
+        <div v-else-if="letter2 === 'y'" class="btn-group nested" role="group" id="nested">
+          <button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            yellow    
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <!-- <button type="button" class="btn btn-secondary">grey</button>
+            <button type="button" class="btn btn-warning">yellow</button>
+            <button type="button" class="btn btn-success">green</button> -->
+            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter2 = false">2nd letter color</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter2 = 'c'">grey</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter2 = 'y'">yellow</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter2 = 'g'">green</button></a>
+
+          </div>
+        </div>
+      <!-- </div> -->
+      <!-- <div v-else="letter2 === 'g'"> -->
+        <div v-else="letter2 === 'g'" class="btn-group nested" role="group" id="nested">
+          <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            green    
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <!-- <button type="button" class="btn btn-secondary">grey</button>
+            <button type="button" class="btn btn-warning">yellow</button>
+            <button type="button" class="btn btn-success">green</button> -->
+            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter2 = false">2nd letter color</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter2 = 'c'">grey</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter2 = 'y'">yellow</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter2 = 'g'">green</button></a>
+
+          </div>
+        </div>
+      <!-- </div> -->
+
+
+
+
+
+      <!-- <div v-if="letter3 === false"> -->
+        <div v-if="letter3 === false" class="btn-group nested" role="group" id="nested">
+          <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            3rd letter color
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <!-- <button type="button" class="btn btn-secondary">grey</button>
+            <button type="button" class="btn btn-warning">yellow</button>
+            <button type="button" class="btn btn-success">green</button> -->
+            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter3 = false">3rd letter color</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter3 = 'c'">grey</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter3 = 'y'">yellow</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter3 = 'g'">green</button></a>
+
+          </div>
+        </div>
+      <!-- </div> -->
+      <!-- <div v-else-if="letter3 === 'c'"> -->
+        <div v-else-if="letter3 === 'c'" class="btn-group nested" role="group" id="nested">
+          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            grey    
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <!-- <button type="button" class="btn btn-secondary">grey</button>
+            <button type="button" class="btn btn-warning">yellow</button>
+            <button type="button" class="btn btn-success">green</button> -->
+            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter3 = false">3rd letter color</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter3 = 'c'">grey</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter3 = 'y'">yellow</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter3 = 'g'">green</button></a>
+
+          </div>
+        </div>
+      <!-- </div> -->
+      <!-- <div v-else-if="letter3 === 'y'"> -->
+        <div v-else-if="letter3 === 'y'" class="btn-group nested" role="group" id="nested">
+          <button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            yellow    
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <!-- <button type="button" class="btn btn-secondary">grey</button>
+            <button type="button" class="btn btn-warning">yellow</button>
+            <button type="button" class="btn btn-success">green</button> -->
+            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter3 = false">3rd letter color</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter3 = 'c'">grey</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter3 = 'y'">yellow</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter3 = 'g'">green</button></a>
+
+          </div>
+        </div>
+      <!-- </div> -->
+      <!-- <div v-else="letter3 === 'g'"> -->
+        <div v-else="letter3 === 'g'" class="btn-group nested" role="group" id="nested">
+          <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            green    
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <!-- <button type="button" class="btn btn-secondary">grey</button>
+            <button type="button" class="btn btn-warning">yellow</button>
+            <button type="button" class="btn btn-success">green</button> -->
+            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter3 = false">3rd letter color</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter3 = 'c'">grey</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter3 = 'y'">yellow</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter3 = 'g'">green</button></a>
+
+          </div>
+        </div>
+      <!-- </div> -->
+
+
+
+
+      <!-- <div v-if="letter4 === false"> -->
+        <div v-if="letter4 === false" class="btn-group nested" role="group" id="nested">
+          <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            4th letter color
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <!-- <button type="button" class="btn btn-secondary">grey</button>
+            <button type="button" class="btn btn-warning">yellow</button>
+            <button type="button" class="btn btn-success">green</button> -->
+            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter4 = false">4th letter color</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter4 = 'c'">grey</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter4 = 'y'">yellow</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter4 = 'g'">green</button></a>
+
+          </div>
+        </div>
+      <!-- </div> -->
+      <!-- <div v-else-if="letter4 === 'c'"> -->
+        <div  v-else-if="letter4 === 'c'" class="btn-group nested" role="group" id="nested">
+          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            grey    
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <!-- <button type="button" class="btn btn-secondary">grey</button>
+            <button type="button" class="btn btn-warning">yellow</button>
+            <button type="button" class="btn btn-success">green</button> -->
+            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter4 = false">4th letter color</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter4 = 'c'">grey</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter4 = 'y'">yellow</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter4 = 'g'">green</button></a>
+
+          </div>
+        </div>
+      <!-- </div> -->
+      <!-- <div v-else-if="letter4 === 'y'"> -->
+        <div v-else-if="letter4 === 'y'"class="btn-group nested" role="group" id="nested">
+          <button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            yellow    
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <!-- <button type="button" class="btn btn-secondary">grey</button>
+            <button type="button" class="btn btn-warning">yellow</button>
+            <button type="button" class="btn btn-success">green</button> -->
+            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter4 = false">4th letter color</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter4 = 'c'">grey</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter4 = 'y'">yellow</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter4 = 'g'">green</button></a>
+
+          </div>
+        </div>
+      <!-- </div> -->
+      <!-- <div v-else="letter4 === 'g'"> -->
+        <div v-else="letter4 === 'g'" class="btn-group nested" role="group" id="nested">
+          <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            green    
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <!-- <button type="button" class="btn btn-secondary">grey</button>
+            <button type="button" class="btn btn-warning">yellow</button>
+            <button type="button" class="btn btn-success">green</button> -->
+            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter4 = false">4th letter color</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter4 = 'c'">grey</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter4 = 'y'">yellow</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter4 = 'g'">green</button></a>
+
+          </div>
+        </div>
+      <!-- </div> -->
+
+
+
+      <!-- <div v-if="letter5 === false"> -->
+        <div v-if="letter5 === false" class="btn-group nested" role="group" id="nested">
+          <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            5th letter color
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <!-- <button type="button" class="btn btn-secondary">grey</button>
+            <button type="button" class="btn btn-warning">yellow</button>
+            <button type="button" class="btn btn-success">green</button> -->
+            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter5 = false">5th letter color</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter5 = 'c'">grey</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter5 = 'y'">yellow</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter5 = 'g'">green</button></a>
+
+          </div>
+        </div>
+      <!-- </div> -->
+      <!-- <div v-else-if="letter5 === 'c'"> -->
+        <div v-else-if="letter5 === 'c'" class="btn-group nested" role="group" id="nested">
+          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            grey    
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <!-- <button type="button" class="btn btn-secondary">grey</button>
+            <button type="button" class="btn btn-warning">yellow</button>
+            <button type="button" class="btn btn-success">green</button> -->
+            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter5 = false">5th letter color</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter5 = 'c'">grey</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter5 = 'y'">yellow</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter5 = 'g'">green</button></a>
+
+          </div>
+        </div>
+      <!-- </div> -->
+      <!-- <div v-else-if="letter5 === 'y'"> -->
+        <div v-else-if="letter5 === 'y'" class="btn-group nested" role="group" id="nested">
+          <button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            yellow    
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <!-- <button type="button" class="btn btn-secondary">grey</button>
+            <button type="button" class="btn btn-warning">yellow</button>
+            <button type="button" class="btn btn-success">green</button> -->
+            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter5 = false">5th letter color</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter5 = 'c'">grey</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter5 = 'y'">yellow</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter5 = 'g'">green</button></a>
+
+          </div>
+        </div>
+      <!-- </div> -->
+      <!-- <div v-else="letter5 === 'g'"> -->
+        <div v-else="letter5 === 'g'" class="btn-group nested" role="group" id="nested">
+          <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            green    
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <!-- <button type="button" class="btn btn-secondary">grey</button>
+            <button type="button" class="btn btn-warning">yellow</button>
+            <button type="button" class="btn btn-success">green</button> -->
+            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter5 = false">5th letter color</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter5 = 'c'">grey</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter5 = 'y'">yellow</button></a>
+            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter5 = 'g'">green</button></a>
+
+          </div>
+        </div>
+      <!-- </div> -->
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-3">
+      <div class="my-3 mx-3">
+        <button class="btn btn-primary" @click="addWordInfo()">add Word information</button>
+      </div>
+    </div>
+
+
+    <div class="col-2">
+      <div class="my-3 mx-3">
+        <button class="btn btn-primary" @click="resetWords()">reset words</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="mx-1 mb-1">
+    <hr>
+  </div>
+
+
+  <div class="row mx-1 mb-1">
+    <h5>Word attempts and results so far.</h5>
+
+
+    <div col-1>
+    <!-- <div v-for="(result, index) in wordResults" :key="index"> -->
+          <!-- {{ index + 1}}. {{ wordGuesses[index] }} {{ result }} -->
+      <div v-for="(result, index) in wordResults" :key="index">
+        {{ index + 1}}. {{ wordGuesses[index] }} {{  }}
+      </div>
+    </div>
+  </div>
+
+
+  <div class="mx-1 mb-1">
+    <hr>
+  </div>
+
+
+
+  <div class="mx-3" v-if="loaded">
+    <div v-for="word in remaining_words" :key="word">{{ word }}</div>
+  </div>
+
+
+  <div class="mx-3" v-else-if="isLoading">
+      <h1>Loading Words...</h1>
+  </div>
+</template>
+
 <script setup>
   // Import necessary modules
   import { ref, onMounted } from "vue";
@@ -28,6 +465,8 @@
 
 
   const fileLines = ref([]);
+  let firstScreen = {}
+
 
 // Fetch the file when the component is mounted
 onMounted(async () => {
@@ -43,6 +482,12 @@ onMounted(async () => {
   } catch (error) {
     console.error('Error fetching and parsing file:', error);
   }
+  // finally {
+  //   firstScreen = (await window.getScreenDetails()).screens[0];
+  //   console.log("firstScreen: ", firstScreen)
+  //   updateButtonGroupClass(firstScreen);
+  // }
+
 });
   // Function to load data from CSV file
 //   onMounted(() => {
@@ -84,6 +529,24 @@ onMounted(async () => {
     loaded.value = true
     isLoading.value = false
 
+
+
+    // const buttonGroup = document.querySelector('.btn-group-responsive');
+    //   if (window.innerWidth >= 768) {
+    //     console.log("test")
+    //     buttonGroup.classList.add('btn-group');
+    //     console.log("classList after if statement: ", classList)
+    //   }
+    //   else {
+    //     buttonGroup.classList.add('btn-group-vertical')
+    //     console.log("classList after else statement: ", classList)
+    //   }
+
+    // firstScreen = (await window.getScreenDetails()).screens[0];
+    // updateButtonGroupClass(firstScreen);
+    firstScreen = window.screen;
+    console.log("firstScreen: ", firstScreen)
+    updateButtonGroupClass(firstScreen);
   }
 
   function resetWords() {
@@ -418,439 +881,99 @@ onMounted(async () => {
     letter4.value = false
     letter5.value = false
   }
+
+  function updateButtonGroupClass(screen) {
+    console.log("updateButtonGroupClass called")
+    const buttonGroup = document.getElementById('buttonGroup');
+    // console.log("buttonGroup: ", buttonGroup)
+    // const buttons = document.getElementsByClassName('nested')
+    // console.log("buttons: ", buttons)
+    if (screen.width < 768) { // md breakpoint
+      buttonGroup.className = 'btn-group-vertical';
+      // buttonGroup = document.getElementById('buttonGroup');
+
+      // for (let i = 0; i < buttons.length; i++) {
+      //   buttons[i].classList = 'btn-group'
+      //   buttons[i].classList.add("dropend")
+      // }
+    } 
+    else {
+      buttonGroup.className = 'btn-group';
+      // const buttonGroup = document.getElementById('buttonGroup');
+
+      // for (let i = 0; i < buttons.length; i++) {
+      //     buttons[i].className = 'btn-group'
+      // }
+    }
+  }
+
+  // Run on page load
+  // updateButtonGroupClass();
+  
+  // Run on window resize
+  // window.addEventListener('resize', updateButtonGroupClass);
+  window.screen.addEventListener("change", (event) => {
+    console.log("change event fired")
+    updateButtonGroupClass(event)})
 </script>
+<style>
+/* @media (min-width: 768px) {
+  .btn-group-responsive {
+    flex-direction: row !important;
+  }
+}
+@media (max-width: 767.98px) {
+  .btn-group-responsive {
+    flex-direction: column !important;
+  }
+} */
 
-<template>
-  <div class="my-3 mx-3">
-    <header>
-      <h2>Enter information below for an updated list of possible wordle words.</h2>
-    </header>
-  </div>
-
-  <div class="mb-1 mx-3">
-    <label for="word" class="form-label">From the list below, enter the word you used for your wordle guess.</label>
-    <input type="text" class="form-control" id="word" ref="fValue" v-model="wordAttempt" placeholder="paste it here">
-  </div>
-
-
-
-  <div class="mb-1 mx-3">
-    <p>Enter wordles feedback for you by selecting the appropriate colors in the dropdown buttons below.</p>
-    <!-- <label for="wordColorKey" class="form-label">For each letter of your word attempt, type the letter corresponding to color feedback: y for yellow, g for green, c for charcoal.</label>
-    <input type="text" class="form-control" id="WordColorKey" v-model="wordResult" placeholder="type code here. Ex: cycgg"> -->
-  </div>
-
-  <div class="mb-1 mx-3">
-    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-
-      <div v-if="letter1 === false">
-        <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            1st letter color
-          </button>
-          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
-            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter1 = false">1st letter color</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter1 = 'c'">grey</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter1 = 'y'">yellow</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter1 = 'g'">green</button></a>
-
-          </div>
-        </div>
-      </div>
-      <div v-else-if="letter1 === 'c'">
-        <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            grey    
-          </button>
-          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
-            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter1 = false">1st letter color</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter1 = 'c'">grey</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter1 = 'y'">yellow</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter1 = 'g'">green</button></a>
-
-          </div>
-        </div>
-      </div>
-      <div v-else-if="letter1 === 'y'">
-        <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            yellow    
-          </button>
-          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
-            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter1 = false">1st letter color</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter1 = 'c'">grey</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter1 = 'y'">yellow</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter1 = 'g'">green</button></a>
-
-          </div>
-        </div>
-      </div>
-      <div v-else="letter1 === 'g'">
-        <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            green    
-          </button>
-          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
-            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter1 = false">1st letter color</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter1 = 'c'">grey</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter1 = 'y'">yellow</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter1 = 'g'">green</button></a>
-
-          </div>
-        </div>
-      </div>
+    /* Custom CSS to toggle classes based on screen size */
+    /* @media (min-width: 768px) {
+      .btn-group-vertical {
+        flex-direction: row !important;
+      }
+    }
+    @media (max-width: 767.98px) {
+      .btn-group {
+        flex-direction: column !important;
+      }
+    } */
 
 
+    /* Initial styling for btn-group-responsive */
+    .btn-group-responsive {
+      display: flex;
+    }
 
+    /* Small screens (default) */
+/* .sm\:btn-group-vertical {
+  display: flex;
+  flex-direction: column;
+} */
 
-      <div v-if="letter2 === false">
-        <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            2nd letter color
-          </button>
-          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
-            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter2 = false">2nd letter color</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter2 = 'c'">grey</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter2 = 'y'">yellow</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter2 = 'g'">green</button></a>
+/* Medium and larger screens */
+/* @media (min-width: 768px) {
+  .md\:btn-group {
+    display: flex;
+    flex-direction: row;
+  }
+} */
 
-          </div>
-        </div>
-      </div>
-      <div v-else-if="letter2 === 'c'">
-        <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            grey    
-          </button>
-          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
-            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter2 = false">2nd letter color</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter2 = 'c'">grey</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter2 = 'y'">yellow</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter2 = 'g'">green</button></a>
-
-          </div>
-        </div>
-      </div>
-      <div v-else-if="letter2 === 'y'">
-        <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            yellow    
-          </button>
-          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
-            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter2 = false">2nd letter color</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter2 = 'c'">grey</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter2 = 'y'">yellow</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter2 = 'g'">green</button></a>
-
-          </div>
-        </div>
-      </div>
-      <div v-else="letter2 === 'g'">
-        <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            green    
-          </button>
-          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
-            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter2 = false">2nd letter color</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter2 = 'c'">grey</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter2 = 'y'">yellow</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter2 = 'g'">green</button></a>
-
-          </div>
-        </div>
-      </div>
-
-
-
-
-
-      <div v-if="letter3 === false">
-        <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            3rd letter color
-          </button>
-          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
-            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter3 = false">3rd letter color</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter3 = 'c'">grey</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter3 = 'y'">yellow</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter3 = 'g'">green</button></a>
-
-          </div>
-        </div>
-      </div>
-      <div v-else-if="letter3 === 'c'">
-        <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            grey    
-          </button>
-          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
-            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter3 = false">3rd letter color</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter3 = 'c'">grey</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter3 = 'y'">yellow</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter3 = 'g'">green</button></a>
-
-          </div>
-        </div>
-      </div>
-      <div v-else-if="letter3 === 'y'">
-        <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            yellow    
-          </button>
-          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
-            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter3 = false">3rd letter color</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter3 = 'c'">grey</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter3 = 'y'">yellow</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter3 = 'g'">green</button></a>
-
-          </div>
-        </div>
-      </div>
-      <div v-else="letter3 === 'g'">
-        <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            green    
-          </button>
-          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
-            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter3 = false">3rd letter color</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter3 = 'c'">grey</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter3 = 'y'">yellow</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter3 = 'g'">green</button></a>
-
-          </div>
-        </div>
-      </div>
-
-
-
-
-      <div v-if="letter4 === false">
-        <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            4th letter color
-          </button>
-          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
-            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter4 = false">4th letter color</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter4 = 'c'">grey</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter4 = 'y'">yellow</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter4 = 'g'">green</button></a>
-
-          </div>
-        </div>
-      </div>
-      <div v-else-if="letter4 === 'c'">
-        <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            grey    
-          </button>
-          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
-            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter4 = false">4th letter color</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter4 = 'c'">grey</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter4 = 'y'">yellow</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter4 = 'g'">green</button></a>
-
-          </div>
-        </div>
-      </div>
-      <div v-else-if="letter4 === 'y'">
-        <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            yellow    
-          </button>
-          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
-            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter4 = false">4th letter color</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter4 = 'c'">grey</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter4 = 'y'">yellow</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter4 = 'g'">green</button></a>
-
-          </div>
-        </div>
-      </div>
-      <div v-else="letter4 === 'g'">
-        <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            green    
-          </button>
-          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
-            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter4 = false">4th letter color</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter4 = 'c'">grey</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter4 = 'y'">yellow</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter4 = 'g'">green</button></a>
-
-          </div>
-        </div>
-      </div>
-
-
-
-      <div v-if="letter5 === false">
-        <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            5th letter color
-          </button>
-          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
-            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter5 = false">5th letter color</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter5 = 'c'">grey</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter5 = 'y'">yellow</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter5 = 'g'">green</button></a>
-
-          </div>
-        </div>
-      </div>
-      <div v-else-if="letter5 === 'c'">
-        <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            grey    
-          </button>
-          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
-            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter5 = false">5th letter color</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter5 = 'c'">grey</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter5 = 'y'">yellow</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter5 = 'g'">green</button></a>
-
-          </div>
-        </div>
-      </div>
-      <div v-else-if="letter5 === 'y'">
-        <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            yellow    
-          </button>
-          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
-            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter5 = false">5th letter color</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter5 = 'c'">grey</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter5 = 'y'">yellow</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter5 = 'g'">green</button></a>
-
-          </div>
-        </div>
-      </div>
-      <div v-else="letter5 === 'g'">
-        <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            green    
-          </button>
-          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
-            <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter5 = false">5th letter color</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter5 = 'c'">grey</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter5 = 'y'">yellow</button></a>
-            <a class="dropdown-item"><button type="button" class="btn btn-success" @click="letter5 = 'g'">green</button></a>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="row">
-    <div class="col-3">
-      <div class="my-3 mx-3">
-        <button class="btn btn-primary" @click="addWordInfo()">add Word information</button>
-      </div>
-    </div>
-
-
-    <div class="col-2">
-      <div class="my-3 mx-3">
-        <button class="btn btn-primary" @click="resetWords()">reset words</button>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="mx-1 mb-1">
-    <hr>
-  </div>
-
-
-  <div class="row mx-1 mb-1">
-    <h5>Word attempts and results so far.</h5>
-
-
-    <div col-1>
-    <!-- <div v-for="(result, index) in wordResults" :key="index"> -->
-          <!-- {{ index + 1}}. {{ wordGuesses[index] }} {{ result }} -->
-      <div v-for="(result, index) in wordResults" :key="index">
-        {{ index + 1}}. {{ wordGuesses[index] }} {{  }}
-      </div>
-    </div>
-  </div>
-
-
-  <div class="mx-1 mb-1">
-    <hr>
-  </div>
-
-
-
-  <div class="mx-3" v-if="loaded">
-    <div v-for="word in remaining_words" :key="word">{{ word }}</div>
-  </div>
-
-
-  <div class="mx-3" v-else-if="isLoading">
-      <h1>Loading Words...</h1>
-  </div>
-</template>
-
+/* @media (max-width: 767.5px) {
+  .btn-group-vertical {
+    color: blue
+  }
+  .btn-group {
+    display
+  }
+}
+ @media (min-width: 768px) {
+  .btn-group-vertical {
+    display: none
+  }
+  .btn-group {
+    color: blue
+  }
+ } */
+</style>
