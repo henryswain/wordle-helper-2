@@ -16,23 +16,17 @@
 
   <div class="mb-1 mx-3">
     <p>Enter wordles feedback for you by selecting the appropriate colors in the dropdown buttons below.</p>
-    <!-- <label for="wordColorKey" class="form-label">For each letter of your word attempt, type the letter corresponding to color feedback: y for yellow, g for green, c for charcoal.</label>
-    <input type="text" class="form-control" id="WordColorKey" v-model="wordResult" placeholder="type code here. Ex: cycgg"> -->
   </div>
 
   <div class="mb-1 mx-3">
     <div id="buttonGroup" class="btn-group" role="group" aria-label="Button group with nested dropdown">
-      <!-- btn-group-responsive -->
-      <!-- btn-group btn-group-responsive -->
-      <!-- <div v-if="letter1 === false"> -->
+
         <div v-if="letter1 === false" class="btn-group nested" role="group" id="nested">
           <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             1st letter color
           </button>
           <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
+           
             <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter1 = false">1st letter color</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter1 = 'c'">grey</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter1 = 'y'">yellow</button></a>
@@ -40,16 +34,13 @@
 
           </div>
         </div>
-      <!-- </div> -->
-      <!-- <div v-else-if="letter1 === 'c'"> -->
+
         <div v-else-if="letter1 === 'c'" class="btn-group nested" role="group" id="nested">
           <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             grey    
           </button>
           <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
+           
             <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter1 = false">1st letter color</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter1 = 'c'">grey</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter1 = 'y'">yellow</button></a>
@@ -57,16 +48,13 @@
 
           </div>
         </div>
-      <!-- </div> -->
-      <!-- <div v-else-if="letter1 === 'y'"> -->
+
         <div v-else-if="letter1 === 'y'" class="btn-group nested" role="group" id="nested">
           <button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             yellow    
           </button>
           <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
+           
             <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter1 = false">1st letter color</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter1 = 'c'">grey</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter1 = 'y'">yellow</button></a>
@@ -74,16 +62,13 @@
 
           </div>
         </div>
-      <!-- </div> -->
-      <!-- <div v-else="letter1 === 'g'"> -->
+
         <div v-else="letter1 === 'g'" class="btn-group nested" role="group" id="nested">
           <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             green    
           </button>
           <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
+           
             <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter1 = false">1st letter color</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter1 = 'c'">grey</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter1 = 'y'">yellow</button></a>
@@ -91,20 +76,17 @@
 
           </div>
         </div>
-      <!-- </div> -->
 
 
 
 
-      <!-- <div v-if="letter2 === false"> -->
+
         <div v-if="letter2 === false" class="btn-group nested" role="group" id="nested">
           <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             2nd letter color
           </button>
           <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
+           
             <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter2 = false">2nd letter color</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter2 = 'c'">grey</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter2 = 'y'">yellow</button></a>
@@ -112,16 +94,13 @@
 
           </div>
         </div>
-      <!-- </div> -->
-      <!-- <div v-else-if="letter2 === 'c'"> -->
+
         <div v-else-if="letter2 === 'c'" class="btn-group nested" role="group" id="nested">
           <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             grey    
           </button>
           <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
+            
             <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter2 = false">2nd letter color</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter2 = 'c'">grey</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter2 = 'y'">yellow</button></a>
@@ -129,16 +108,13 @@
 
           </div>
         </div>
-      <!-- </div> -->
-      <!-- <div v-else-if="letter2 === 'y'"> -->
+
         <div v-else-if="letter2 === 'y'" class="btn-group nested" role="group" id="nested">
           <button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             yellow    
           </button>
           <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
+           
             <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter2 = false">2nd letter color</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter2 = 'c'">grey</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter2 = 'y'">yellow</button></a>
@@ -146,16 +122,13 @@
 
           </div>
         </div>
-      <!-- </div> -->
-      <!-- <div v-else="letter2 === 'g'"> -->
+
         <div v-else="letter2 === 'g'" class="btn-group nested" role="group" id="nested">
           <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             green    
           </button>
           <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
+          
             <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter2 = false">2nd letter color</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter2 = 'c'">grey</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter2 = 'y'">yellow</button></a>
@@ -163,21 +136,19 @@
 
           </div>
         </div>
-      <!-- </div> -->
 
 
 
 
 
-      <!-- <div v-if="letter3 === false"> -->
+
+
         <div v-if="letter3 === false" class="btn-group nested" role="group" id="nested">
           <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             3rd letter color
           </button>
           <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
+           
             <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter3 = false">3rd letter color</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter3 = 'c'">grey</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter3 = 'y'">yellow</button></a>
@@ -185,16 +156,13 @@
 
           </div>
         </div>
-      <!-- </div> -->
-      <!-- <div v-else-if="letter3 === 'c'"> -->
+
         <div v-else-if="letter3 === 'c'" class="btn-group nested" role="group" id="nested">
           <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             grey    
           </button>
           <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
+          
             <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter3 = false">3rd letter color</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter3 = 'c'">grey</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter3 = 'y'">yellow</button></a>
@@ -202,16 +170,13 @@
 
           </div>
         </div>
-      <!-- </div> -->
-      <!-- <div v-else-if="letter3 === 'y'"> -->
+
         <div v-else-if="letter3 === 'y'" class="btn-group nested" role="group" id="nested">
           <button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             yellow    
           </button>
           <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
+           
             <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter3 = false">3rd letter color</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter3 = 'c'">grey</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter3 = 'y'">yellow</button></a>
@@ -219,16 +184,13 @@
 
           </div>
         </div>
-      <!-- </div> -->
-      <!-- <div v-else="letter3 === 'g'"> -->
+
         <div v-else="letter3 === 'g'" class="btn-group nested" role="group" id="nested">
           <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             green    
           </button>
           <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
+           
             <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter3 = false">3rd letter color</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter3 = 'c'">grey</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter3 = 'y'">yellow</button></a>
@@ -236,20 +198,18 @@
 
           </div>
         </div>
-      <!-- </div> -->
 
 
 
 
-      <!-- <div v-if="letter4 === false"> -->
+
+
         <div v-if="letter4 === false" class="btn-group nested" role="group" id="nested">
           <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             4th letter color
           </button>
           <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
+          
             <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter4 = false">4th letter color</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter4 = 'c'">grey</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter4 = 'y'">yellow</button></a>
@@ -257,16 +217,13 @@
 
           </div>
         </div>
-      <!-- </div> -->
-      <!-- <div v-else-if="letter4 === 'c'"> -->
+
         <div  v-else-if="letter4 === 'c'" class="btn-group nested" role="group" id="nested">
           <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             grey    
           </button>
           <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
+       
             <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter4 = false">4th letter color</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter4 = 'c'">grey</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter4 = 'y'">yellow</button></a>
@@ -274,16 +231,13 @@
 
           </div>
         </div>
-      <!-- </div> -->
-      <!-- <div v-else-if="letter4 === 'y'"> -->
+
         <div v-else-if="letter4 === 'y'"class="btn-group nested" role="group" id="nested">
           <button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             yellow    
           </button>
           <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
+          
             <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter4 = false">4th letter color</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter4 = 'c'">grey</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter4 = 'y'">yellow</button></a>
@@ -291,16 +245,13 @@
 
           </div>
         </div>
-      <!-- </div> -->
-      <!-- <div v-else="letter4 === 'g'"> -->
+
         <div v-else="letter4 === 'g'" class="btn-group nested" role="group" id="nested">
           <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             green    
           </button>
           <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
+       
             <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter4 = false">4th letter color</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter4 = 'c'">grey</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter4 = 'y'">yellow</button></a>
@@ -308,19 +259,17 @@
 
           </div>
         </div>
-      <!-- </div> -->
 
 
 
-      <!-- <div v-if="letter5 === false"> -->
+
+
         <div v-if="letter5 === false" class="btn-group nested" role="group" id="nested">
           <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             5th letter color
           </button>
           <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
+           
             <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter5 = false">5th letter color</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter5 = 'c'">grey</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter5 = 'y'">yellow</button></a>
@@ -328,16 +277,13 @@
 
           </div>
         </div>
-      <!-- </div> -->
-      <!-- <div v-else-if="letter5 === 'c'"> -->
+
         <div v-else-if="letter5 === 'c'" class="btn-group nested" role="group" id="nested">
           <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             grey    
           </button>
           <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
+         
             <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter5 = false">5th letter color</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter5 = 'c'">grey</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter5 = 'y'">yellow</button></a>
@@ -345,16 +291,13 @@
 
           </div>
         </div>
-      <!-- </div> -->
-      <!-- <div v-else-if="letter5 === 'y'"> -->
+
         <div v-else-if="letter5 === 'y'" class="btn-group nested" role="group" id="nested">
           <button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             yellow    
           </button>
           <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
+
             <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter5 = false">5th letter color</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter5 = 'c'">grey</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter5 = 'y'">yellow</button></a>
@@ -362,16 +305,13 @@
 
           </div>
         </div>
-      <!-- </div> -->
-      <!-- <div v-else="letter5 === 'g'"> -->
+
         <div v-else="letter5 === 'g'" class="btn-group nested" role="group" id="nested">
           <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             green    
           </button>
           <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <!-- <button type="button" class="btn btn-secondary">grey</button>
-            <button type="button" class="btn btn-warning">yellow</button>
-            <button type="button" class="btn btn-success">green</button> -->
+         
             <a class="dropdown-item"><button type="button" class="btn btn-primary" @click="letter5 = false">5th letter color</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-secondary" @click="letter5 = 'c'">grey</button></a>
             <a class="dropdown-item"><button type="button" class="btn btn-warning" @click="letter5 = 'y'">yellow</button></a>
@@ -379,7 +319,7 @@
 
           </div>
         </div>
-      <!-- </div> -->
+
     </div>
   </div>
 
@@ -482,33 +422,10 @@ onMounted(async () => {
   } catch (error) {
     console.error('Error fetching and parsing file:', error);
   }
-  // finally {
-  //   firstScreen = (await window.getScreenDetails()).screens[0];
-  //   console.log("firstScreen: ", firstScreen)
-  //   updateButtonGroupClass(firstScreen);
-  // }
+
 
 });
-  // Function to load data from CSV file
-//   onMounted(() => {
-//     isLoading.value = true;
-//     fetch(dataFile)
-// .then(res => {
-//       console.log(res.toString().split("/n"))
-//     return showData(res.toString().split("/n"));
-//   });
-// })
-        // .then((res) => res.text())
-      // .then((text) => loadData(text))
-      // .then((parsedText) => showData(parsedText));
 
-  // Function to load data from CSV file
-  // async function loadData(dataText) {
-
-    // let data = papaparse.parse(dataText, { delimiter: ",", header: true });
-  //   console.log(dataText.split("/n"))
-  //   return dataText;
-  // }
 
 
   function showData(parsedData) {
@@ -517,10 +434,7 @@ onMounted(async () => {
       if (wordDict.length === 5) {
 
         remaining_words.value.push(wordDict.toLowerCase())
-        // remaining_words.value.push(wordDict["word"].toLowerCase())
-        //remaining_words.value = remaining_words.value.sort()
-        // remaining_words2.value.push(wordDict["word"].toLowerCase())
-        //remaining_words2.value = remaining_words.value.sort()
+
       }
     }
     remaining_words.value = remaining_words.value.sort()
@@ -531,19 +445,6 @@ onMounted(async () => {
 
 
 
-    // const buttonGroup = document.querySelector('.btn-group-responsive');
-    //   if (window.innerWidth >= 768) {
-    //     console.log("test")
-    //     buttonGroup.classList.add('btn-group');
-    //     console.log("classList after if statement: ", classList)
-    //   }
-    //   else {
-    //     buttonGroup.classList.add('btn-group-vertical')
-    //     console.log("classList after else statement: ", classList)
-    //   }
-
-    // firstScreen = (await window.getScreenDetails()).screens[0];
-    // updateButtonGroupClass(firstScreen);
     firstScreen = window.screen;
     console.log("firstScreen: ", firstScreen)
     updateButtonGroupClass(firstScreen);
@@ -575,8 +476,7 @@ onMounted(async () => {
     loaded.value = false;
    
     console.log("wordResult: ", wordResult.value)
-    // let color = wordResult.value[m].toLowerCase(); 
-    // let letter = wordAttempt.value[m].toLowerCase();
+
 
     let nongreenindex = []
       for (let l = 0; l < 5; l++) {
@@ -605,7 +505,6 @@ onMounted(async () => {
       const ylettmap = ref({})
       for (let i = 0; i < wordResult.value.length; i++) {
         if (wordResult.value.charAt(i).toLowerCase() === "y") {
-          //if (ylettmap.value.hasOwnProperty(wordAttempt.value.charAt(i).toLowerCase())) {
           if (wordAttempt.value.charAt(i) in ylettmap.value) {
 
             ylettmap.value[wordAttempt.value.charAt(i)].push(i)
@@ -629,26 +528,11 @@ onMounted(async () => {
       }
       console.log("charExist.value: ", charExist.value)
 
-      // const possibleYExistancePlaces = ref({})
 
-      // const greenExist = ref({})
-      // for (let i = 0; i < 5; i++) {
-      //   if (wordResult.value[i].toLowerCase() === "g") {
-      //     if (wordAttempt.value[i] in greenExist.value) {
-      //       greenExist.value[wordAttempt.value[i]].push(i)
-      //     }
-      //     else {greenExist.value[wordAttempt.value[i]] = [i]}
-      //   }
-      // }
 
     setTimeout(() => {
 
-      // const greenExistKeys = Object.keys(greenExist.value)
-      // for (let c of greenExistKeys) {
-      //   remaining_words.value = remaining_words.value.filter((word) => {
 
-      //   })
-      // }
 
     
       remaining_words.value = remaining_words.value.filter((word) => {
@@ -670,7 +554,6 @@ onMounted(async () => {
 
       const ylettmapKeys = Object.keys(ylettmap.value)
       console.log("ylettmapKeys: ", ylettmapKeys)
-      // remaining_words.value = remaining_words.value.filter((word) => {
         let yellowTruths = new Array(ylettmapKeys.length).fill(false);
         for (let c of ylettmapKeys) {
           let count = 0;
@@ -691,7 +574,6 @@ onMounted(async () => {
               for (let i = 0; i < 5; i++) {
                 if (!(possibleYExistancePlaces.value.includes(i))) {
                   if (word[i] == c) {
-                    // yellowTruths[ylettmapKeys.indexOf(c)] = false
                     return false
                   }
                 }
@@ -702,11 +584,9 @@ onMounted(async () => {
                 }
               }
               if (count == ylettmap.value[c].length) {
-                // yellowTruths[ylettmapKeys.indexOf(c)] = true
                 return true
               }
               else {
-                // yellowTruths[ylettmapKeys.indexOf(c)] = false
                 return false
               }
             })
@@ -719,7 +599,6 @@ onMounted(async () => {
               for (let i of nongreenindex) {          
                 if (!(possibleYExistancePlaces.value.includes(i))) {
                   if (word[i] == c) {
-                    // yellowTruths[ylettmapKeys.indexOf(c)] = false
                     return false
                   }
                 }
@@ -730,83 +609,20 @@ onMounted(async () => {
                 }
               }
               if (good == false) {
-                // yellowTruths[ylettmapKeys.indexOf(c)] = false
                 return false
               }
               else {
-                // yellowTruths[ylettmapKeys.indexOf(c)] = true
                 return true
               }
             })
           }
         }
         
-        // if (yellowTruths.includes(false)) {
-        //   return false
-        // }
-        // else {
-        //   return true
-        // }
-      // })
-
-
-      // for (let c of Object.keys(blackExist.value)) {
-      //   remaining_words.value = remaining_words.value.filter((word) => {
-      //     let count = 0;
-      //     let alreadyCovered = [];
-      //     let bad = false;
-
-
-
-      //     if (c in ylettmap.value) {
-
-      //       let possibleExistancePlaces = ref([])
-      //       for (let i of nongreenindex) {
-      //         if (!(charExist.value[c].includes(i))) {
-      //           possibleExistancePlaces.value.push(parseInt(i))
-      //         }
-      //       }
-
-      //       for (let i in word) {
-      //         if (!(possibleExistancePlaces.value.includes(i))) {
-      //           if (word[i] == c) {
-      //             return false
-      //             bad = true
-      //             break
-      //           }
-      //         }
-      //         else {
-      //           if (word[i] == c) {
-      //             count++ 
-      //           }
-      //         }
-      //       }
-      //       if (bad == false) {
-      //         if (count == ylettmap.value[c].length) {
-      //         }
-      //         else {
-      //           return false
-      //         }
-      //       }
-      //     }
-      //     else {
-      //       let bad2 = false
-      //       for (let i of nongreenindex) {
-      //         if (word[i] == letter) {
-      //           bad = true
-      //         }
-      //       }
-      //       if (!bad2) {
-      //         return true
-      //       }
-      //     }
-      //   })
-      // }
+       
 
       
       const blackExistKeys = Object.keys(blackExist.value)
       console.log("blackExistKeys: ", blackExistKeys)
-      // remaining_words.value = remaining_words.value.filter((word) => {
         let blackTruths = new Array(blackExistKeys.length).fill(false);
         for (let c of blackExistKeys) {
           console.log("c: ", c)
@@ -827,7 +643,6 @@ onMounted(async () => {
             for (let i = 0; i < 5; i++) {
               if (!(possibleBExistancePlaces.value.includes(i))) {
                 if (word[i] == c) {
-                  // blackTruths[blackExistKeys.indexOf(c)] = false
                   return false
                 }
               }
@@ -838,11 +653,9 @@ onMounted(async () => {
               }
             }
             if (count == ylettmap.value[c].length) {
-              // blackTruths[blackExistKeys.indexOf(c)] = true
               return true
             }
             else {
-              // blackTruths[blackExistKeys.indexOf(c)] = false
               return false
             }
           })
@@ -852,20 +665,14 @@ onMounted(async () => {
 
             for (let i of nongreenindex) {
               if (word[i] == c) {
-                // blackTruths[blackExistKeys.indexOf(c)] = false
                 return false
               }
             }
-            // blackTruths[blackExistKeys.indexOf(c)] = true
             return true
           })
           }
         }
-        // if (blackTruths.includes(false)) {
-        //   return false
-        // }
-        // else {return true}
-      // })
+        
 
       loaded.value = true; // Set loaded to true after filtering
       isLoading.value = false; // Set isLoading to false after filtering
@@ -885,60 +692,24 @@ onMounted(async () => {
   function updateButtonGroupClass(screen) {
     console.log("updateButtonGroupClass called")
     const buttonGroup = document.getElementById('buttonGroup');
-    // console.log("buttonGroup: ", buttonGroup)
-    // const buttons = document.getElementsByClassName('nested')
-    // console.log("buttons: ", buttons)
+
     if (screen.width < 768) { // md breakpoint
       buttonGroup.className = 'btn-group-vertical';
-      // buttonGroup = document.getElementById('buttonGroup');
 
-      // for (let i = 0; i < buttons.length; i++) {
-      //   buttons[i].classList = 'btn-group'
-      //   buttons[i].classList.add("dropend")
-      // }
     } 
     else {
       buttonGroup.className = 'btn-group';
-      // const buttonGroup = document.getElementById('buttonGroup');
 
-      // for (let i = 0; i < buttons.length; i++) {
-      //     buttons[i].className = 'btn-group'
-      // }
     }
   }
 
-  // Run on page load
-  // updateButtonGroupClass();
   
-  // Run on window resize
-  // window.addEventListener('resize', updateButtonGroupClass);
   window.screen.addEventListener("change", (event) => {
     console.log("change event fired")
     updateButtonGroupClass(event)})
 </script>
 <style>
-/* @media (min-width: 768px) {
-  .btn-group-responsive {
-    flex-direction: row !important;
-  }
-}
-@media (max-width: 767.98px) {
-  .btn-group-responsive {
-    flex-direction: column !important;
-  }
-} */
 
-    /* Custom CSS to toggle classes based on screen size */
-    /* @media (min-width: 768px) {
-      .btn-group-vertical {
-        flex-direction: row !important;
-      }
-    }
-    @media (max-width: 767.98px) {
-      .btn-group {
-        flex-direction: column !important;
-      }
-    } */
 
 
     /* Initial styling for btn-group-responsive */
@@ -946,34 +717,5 @@ onMounted(async () => {
       display: flex;
     }
 
-    /* Small screens (default) */
-/* .sm\:btn-group-vertical {
-  display: flex;
-  flex-direction: column;
-} */
-
-/* Medium and larger screens */
-/* @media (min-width: 768px) {
-  .md\:btn-group {
-    display: flex;
-    flex-direction: row;
-  }
-} */
-
-/* @media (max-width: 767.5px) {
-  .btn-group-vertical {
-    color: blue
-  }
-  .btn-group {
-    display
-  }
-}
- @media (min-width: 768px) {
-  .btn-group-vertical {
-    display: none
-  }
-  .btn-group {
-    color: blue
-  }
- } */
+   
 </style>
