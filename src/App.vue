@@ -429,7 +429,7 @@ onMounted(async () => {
 
 
   function showData(parsedData) {
-    console.log('showData called')
+    // console.log('showData called')
     for (let wordDict of parsedData) {
       if (wordDict.length === 5) {
 
@@ -446,7 +446,7 @@ onMounted(async () => {
 
 
     firstScreen = window.screen;
-    console.log("firstScreen: ", firstScreen)
+    // console.log("firstScreen: ", firstScreen)
     updateButtonGroupClass(firstScreen);
   }
 
@@ -464,7 +464,7 @@ onMounted(async () => {
   function addWordInfo() {
 
     wordAttempt.value = wordAttempt.value.toLowerCase()
-    console.log("wordAttempt: ", wordAttempt.value)
+    // console.log("wordAttempt: ", wordAttempt.value)
 
     wordResult.value = letter1.value + letter2.value + letter3.value + letter4.value + letter5.value
     wordGuesses.value.push(wordAttempt.value)
@@ -475,7 +475,7 @@ onMounted(async () => {
     isLoading.value = true;
     loaded.value = false;
    
-    console.log("wordResult: ", wordResult.value)
+    // console.log("wordResult: ", wordResult.value)
 
 
     let nongreenindex = []
@@ -484,7 +484,7 @@ onMounted(async () => {
           nongreenindex.push(l)
         }
       } 
-      console.log("nongreenindex: ", nongreenindex)
+      // console.log("nongreenindex: ", nongreenindex)
 
       // creates a map of all black characters and their black index
       const blackExist = ref({})
@@ -498,7 +498,7 @@ onMounted(async () => {
           else {blackExist.value[wordAttempt.value.charAt(i)] = [i]}
         }
       }
-      console.log("blackExist.value: ", blackExist.value)
+      // console.log("blackExist.value: ", blackExist.value)
 
 
 
@@ -513,7 +513,7 @@ onMounted(async () => {
         else {ylettmap.value[wordAttempt.value.charAt(i)] = [i]}
         }
       }
-      console.log("ylettmap.value: ", ylettmap.value)
+      // console.log("ylettmap.value: ", ylettmap.value)
 
       const charExist = ref({})
       for (let i = 0; i < wordResult.value.length; i++) {
@@ -526,7 +526,7 @@ onMounted(async () => {
           else {charExist.value[wordAttempt.value.charAt(i)] = [i]}
         }
       }
-      console.log("charExist.value: ", charExist.value)
+      // console.log("charExist.value: ", charExist.value)
 
 
 
@@ -553,7 +553,7 @@ onMounted(async () => {
       })
 
       const ylettmapKeys = Object.keys(ylettmap.value)
-      console.log("ylettmapKeys: ", ylettmapKeys)
+      // console.log("ylettmapKeys: ", ylettmapKeys)
         let yellowTruths = new Array(ylettmapKeys.length).fill(false);
         for (let c of ylettmapKeys) {
           let count = 0;
@@ -568,7 +568,7 @@ onMounted(async () => {
           if (Object.keys(blackExist.value).includes(c)) {
             remaining_words.value = remaining_words.value.filter((word) => {
 
-              console.log("c", c)
+              // console.log("c", c)
               let count = 0;
         
               for (let i = 0; i < 5; i++) {
@@ -622,10 +622,10 @@ onMounted(async () => {
 
       
       const blackExistKeys = Object.keys(blackExist.value)
-      console.log("blackExistKeys: ", blackExistKeys)
+      // console.log("blackExistKeys: ", blackExistKeys)
         let blackTruths = new Array(blackExistKeys.length).fill(false);
         for (let c of blackExistKeys) {
-          console.log("c: ", c)
+          // console.log("c: ", c)
           let count = 0;
           const possibleBExistancePlaces = ref([])
           for (let i of nongreenindex) {
@@ -634,7 +634,7 @@ onMounted(async () => {
             }
           }
 
-          console.log("possibleBExistancePlaces.value: ", possibleBExistancePlaces.value)
+          // console.log("possibleBExistancePlaces.value: ", possibleBExistancePlaces.value)
           if (Object.keys(ylettmap.value).includes(c)) {
 
             remaining_words.value = remaining_words.value.filter((word) => {
@@ -690,7 +690,7 @@ onMounted(async () => {
   }
 
   function updateButtonGroupClass(screen) {
-    console.log("updateButtonGroupClass called")
+    // console.log("updateButtonGroupClass called")
     const buttonGroup = document.getElementById('buttonGroup');
 
     if (screen.width < 768) { // md breakpoint
@@ -705,7 +705,7 @@ onMounted(async () => {
 
   
   window.screen.addEventListener("change", (event) => {
-    console.log("change event fired")
+    // console.log("change event fired")
     updateButtonGroupClass(event)})
 </script>
 <style>
